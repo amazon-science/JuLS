@@ -1,4 +1,11 @@
-<div style="text-align: center;">
+<div align="center">
+
+# JuLS : A Julia Local Search solver
+
+</div>
+
+
+<div align="center">
   <img src="logo.png" alt="drawing" width="300"/>
 </div>
 
