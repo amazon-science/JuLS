@@ -104,7 +104,7 @@ If you have any inquiries pertaining to the code or the paper, please do not hes
 - [**Arthur Dupuis**](https://www.linkedin.com/in/arthur-dupuis-3a38301a5/)
 - [**Ilan Coulon**](https://www.linkedin.com/in/ilancoulon/)
 - [**Ezra Reich**](https://www.linkedin.com/in/ezra-reich/)
-- [**Mehdi Oudaoud**](linkedin.com/in/el-mehdi-oudaoud-7830b9201/)
+- [**Mehdi Oudaoud**](https://www.linkedin.com/in/el-mehdi-oudaoud-7830b9201/)
 - [**Maxime Mulamba**](https://www.linkedin.com/in/maxime-mulamba-ke-tchomba-b17145195/)
 
 ---
