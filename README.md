@@ -11,11 +11,11 @@
 
 <br>
 
-`JuLS` is a Julia Local Search solver that combines Constraint Based Local Search (CBLS) and Constraint Programming (CP) to solve Constraint Optimization Problem (COP). It is to be seen as an open source project that gives the possibility to solve combinatorial and black box optimization problem.
+`JuLS` is a Julia Local Search solver that combines Constraint Based Local Search (CBLS) and Constraint Programming (CP) to solve Constraint Optimization Problem (COP). It is to be seen as an open source project that gives the possibility to solve combinatorial and black box optimization problems.
 
-A paper with theoritical foundations accompanying this solver can be found [here](JuLS.pdf). 
+A paper with theoretical foundations accompanying this solver can be found [here](JuLS.pdf). 
 
-The CBLS part is inspired from the paper [LocalSolver 1.x](https://www.afpc-asso.org/assets/actes/actes-JFPC-2011.pdf#page=37). The CP part is inspired from [MiniCP](http://www.minicp.org/) and [SeaPearl.jl](https://github.com/corail-research/SeaPearl.jl). 
+The CBLS part is inspired by the paper [LocalSolver 1.x](https://www.afpc-asso.org/assets/actes/actes-JFPC-2011.pdf#page=37). The CP part is inspired by [MiniCP](http://www.minicp.org/) and [SeaPearl.jl](https://github.com/corail-research/SeaPearl.jl). 
 
 ---
 
@@ -29,7 +29,7 @@ julia --threads=auto --project=.
 
 ## Use
 
-Examples are given for the Knapsack problem, TSP and Graph Coloring Problem in this [notebook](zoo.ipynb) . To solve a new COP using JuLS, one needs to : 
+Examples are provided for the Knapsack problem, TSP and Graph Coloring Problem in this [notebook](zoo.ipynb) . To solve a new COP using JuLS, one needs to : 
 1. Create a new experiment to store the instance data : 
 ```julia
 YourExperiment <: Experiment
@@ -107,11 +107,14 @@ If you have any inquiries pertaining to the code or the paper, please do not hes
 
 ## Authors
 
-- [**Axel Navarro**](https://www.linkedin.com/in/axel-navarro-99289921a/)
-- [**Arthur Dupuis**](https://www.linkedin.com/in/arthur-dupuis-3a38301a5/)
-- [**Ilan Coulon**](https://www.linkedin.com/in/ilancoulon/)
-- [**Ezra Reich**](https://www.linkedin.com/in/ezra-reich/)
-- [**Mehdi Oudaoud**](https://www.linkedin.com/in/el-mehdi-oudaoud-7830b9201/)
-- [**Maxime Mulamba**](https://www.linkedin.com/in/maxime-mulamba-ke-tchomba-b17145195/)
+| Name | GitHub |
+|------|--------|
+| [**Axel Navarro**](https://www.linkedin.com/in/axel-navarro-99289921a/) | [navaxel](https://github.com/navaxel) |
+| [**Arthur Dupuis**](https://www.linkedin.com/in/arthur-dupuis-3a38301a5/) | [dupuisar](https://github.com/dupuisar) |
+| [**Ilan Coulon**](https://www.linkedin.com/in/ilancoulon/) | [ilancoulon](https://github.com/ilancoulon) |
+| [**Ezra Reich**](https://www.linkedin.com/in/ezra-reich/) | [EZePiZy](https://github.com/EZePiZy) |
+| [**Mehdi Oudaoud**](https://www.linkedin.com/in/el-mehdi-oudaoud-7830b9201/) | [Mehdi5578](https://github.com/Mehdi5578) |
+| [**Maxime Mulamba**](https://www.linkedin.com/in/maxime-mulamba-ke-tchomba-b17145195/) | [CryoCardiogram](https://github.com/CryoCardiogram) |
+
 
 ---
