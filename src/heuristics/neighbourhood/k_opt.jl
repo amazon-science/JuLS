@@ -117,9 +117,9 @@ end
     rng = Random.MersenneTwister(0)
 
     moves = JuLS.get_neighbourhood(heuristic1, model; rng)
-    @test length(moves) == 10
+    @test length(moves) == 11
 
     moves = JuLS.get_neighbourhood(heuristic2, model; rng)
-    @test length(moves) == 69
+    @test length(moves) == 70
 end
 
