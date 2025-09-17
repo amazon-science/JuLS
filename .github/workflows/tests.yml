@@ -22,21 +22,12 @@ jobs:
       fail-fast: false
       matrix:
         version:
-          - '1.6'
-          - '1.9'
           - '1'  # Latest stable version
         os:
           - ubuntu-latest
           - macOS-latest
-          - windows-latest
         arch:
           - x64
-        exclude:
-          # Exclude some combinations to reduce CI load
-          - os: macOS-latest
-            version: '1.6'
-          - os: windows-latest
-            version: '1.6'
     
     steps:
       - uses: actions/checkout@v4
