@@ -39,6 +39,7 @@ include("heuristics/heuristics.jl")
 include("experiments/experiments.jl")
 
 export
+    Model,
     init_model,
 
     # Experiment
@@ -68,5 +69,17 @@ export
     # Optimization
     optimize!,
     IterationLimit,
-    TimeLimit
+    TimeLimit,
+
+    # DAG and Decision values
+    DAG,
+    DecisionValue,
+    IntDecisionValue,
+
+    # Custom experiments
+    Experiment,
+    n_decision_variables,
+    decision_type,
+    generate_domains,
+    create_dag
 end
