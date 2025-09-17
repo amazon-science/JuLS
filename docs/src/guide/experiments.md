@@ -19,16 +19,16 @@ Every experiment must implement the following functions:
 
 ```julia
 # Define the number of decision variables
-JuLS.n_decision_variables(e::YourExperiment)::Int
+n_decision_variables(e::YourExperiment)::Int
 
 # Define the type of decision variables
-JuLS.decision_type(e::YourExperiment)::Type
+decision_type(e::YourExperiment)::Type
 
 # Generate domains for decision variables
-JuLS.generate_domains(e::YourExperiment)::Vector
+generate_domains(e::YourExperiment)::Vector
 
 # Create the DAG representation of the problem
-JuLS.create_dag(e::YourExperiment)::DAG
+create_dag(e::YourExperiment)::DAG
 ```
 
 ### Initialization Function
@@ -54,22 +54,22 @@ Here's how to create a simple custom experiment:
 using JuLS
 
 # Define your experiment struct
-struct MyCustomExperiment <: JuLS.Experiment
+struct MyCustomExperiment <: Experiment
     n_vars::Int
     bounds::Vector{Tuple{Int,Int}}
     objective_weights::Vector{Float64}
 end
 
 # Implement required functions
-function JuLS.n_decision_variables(e::MyCustomExperiment)
+function n_decision_variables(e::MyCustomExperiment)
     return e.n_vars
 end
 
-function JuLS.decision_type(e::MyCustomExperiment)
-    return JuLS.IntDecisionValue
+function decision_type(e::MyCustomExperiment)
+    return IntDecisionValue
 end
 
-function JuLS.generate_domains(e::MyCustomExperiment)
+function generate_domains(e::MyCustomExperiment)
     domains = []
     for (lower, upper) in e.bounds
         push!(domains, lower:upper)
@@ -77,10 +77,10 @@ function JuLS.generate_domains(e::MyCustomExperiment)
     return domains
 end
 
-function JuLS.create_dag(e::MyCustomExperiment)
+function create_dag(e::MyCustomExperiment)
     # Create your DAG here
     # This defines the constraints and objectives
-    dag = JuLS.DAG()
+    dag = DAG(1)
     
     # Add invariants to represent your problem
     # See the DAG guide for details
@@ -143,7 +143,7 @@ Where `n_colors` is the number of colors to use. The graph file should specify e
 - Handle file format errors gracefully
 
 ```julia
-struct MyExperiment <: JuLS.Experiment
+struct MyExperiment <: Experiment
     data::Matrix{Float64}
     
     function MyExperiment(filepath::String)
@@ -167,7 +167,7 @@ end
 - Cache domains if they're expensive to compute
 
 ```julia
-function JuLS.generate_domains(e::MyExperiment)
+function generate_domains(e::MyExperiment)
     # Cache domains if needed
     if !isdefined(e, :cached_domains)
         e.cached_domains = compute_domains(e)
@@ -183,8 +183,8 @@ end
 - Document the problem formulation
 
 ```julia
-function JuLS.create_dag(e::MyExperiment)
-    dag = JuLS.DAG()
+function create_dag(e::MyExperiment)
+    dag = DAG()
     
     # Add constraints systematically
     add_capacity_constraints!(dag, e)
@@ -203,13 +203,13 @@ Always test your experiment implementation:
 # Test basic functionality
 experiment = MyCustomExperiment(...)
 
-@test JuLS.n_decision_variables(experiment) > 0
-@test JuLS.decision_type(experiment) <: JuLS.DecisionValue
-@test length(JuLS.generate_domains(experiment)) == JuLS.n_decision_variables(experiment)
+@test n_decision_variables(experiment) > 0
+@test decision_type(experiment) <: DecisionValue
+@test length(generate_domains(experiment)) == n_decision_variables(experiment)
 
 # Test with a model
 model = init_model(experiment)
-@test model isa JuLS.Model
+@test model isa Model
 
 # Test optimization
 optimize!(model; limit = IterationLimit(10))

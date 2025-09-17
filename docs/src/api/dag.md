@@ -69,7 +69,7 @@ The DAG uses message passing for efficient computation:
 using JuLS
 
 # Create a DAG for a simple problem
-dag = JuLS.DAG(3)  # 3 decision variables
+dag = DAG(3)  # 3 decision variables
 
 # Add scalar product invariant
 weights = [2.0, 3.0, 1.0]
