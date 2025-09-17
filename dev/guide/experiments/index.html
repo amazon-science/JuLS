@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Creating Experiments · JuLS.jl</title><meta name="title" content="Creating Experiments · JuLS.jl"/><meta property="og:title" content="Creating Experiments · JuLS.jl"/><meta property="twitter:title" content="Creating Experiments · JuLS.jl"/><meta name="description" content="Documentation for JuLS.jl."/><meta property="og:description" content="Documentation for JuLS.jl."/><meta property="twitter:description" content="Documentation for JuLS.jl."/><meta property="og:url" content="https://amazon-science.github.io/JuLS.jl/stable/guide/experiments/"/><meta property="twitter:url" content="https://amazon-science.github.io/JuLS.jl/stable/guide/experiments/"/><link rel="canonical" href="https://amazon-science.github.io/JuLS.jl/stable/guide/experiments/"/><script data-outdated-warner src="../../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../search_index.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><a class="docs-logo" href="../../"><img src="../../assets/logo.png" alt="JuLS.jl logo"/></a><div class="docs-package-name"><span class="docs-autofit"><a href="../../">JuLS.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../../">Home</a></li><li><a class="tocitem" href="../../getting_started/">Getting Started</a></li><li><span class="tocitem">User Guide</span><ul><li class="is-active"><a class="tocitem" href>Creating Experiments</a><ul class="internal"><li><a class="tocitem" href="#What-is-an-Experiment?"><span>What is an Experiment?</span></a></li><li><a class="tocitem" href="#Required-Interface"><span>Required Interface</span></a></li><li><a class="tocitem" href="#Decision-Variable-Types"><span>Decision Variable Types</span></a></li><li><a class="tocitem" href="#Example:-Custom-Experiment"><span>Example: Custom Experiment</span></a></li><li><a class="tocitem" href="#Built-in-Experiments"><span>Built-in Experiments</span></a></li><li><a class="tocitem" href="#Best-Practices"><span>Best Practices</span></a></li><li><a class="tocitem" href="#Testing-Your-Experiment"><span>Testing Your Experiment</span></a></li><li><a class="tocitem" href="#Common-Pitfalls"><span>Common Pitfalls</span></a></li><li><a class="tocitem" href="#Next-Steps"><span>Next Steps</span></a></li></ul></li><li><a class="tocitem" href="../dag/">DAG and Invariants</a></li><li><a class="tocitem" href="../heuristics/">Heuristics</a></li><li><a class="tocitem" href="../cp/">Constraint Programming</a></li></ul></li><li><span class="tocitem">Examples</span><ul><li><a class="tocitem" href="../../examples/knapsack/">Knapsack Problem</a></li><li><a class="tocitem" href="../../examples/tsp/">Traveling Salesman Problem</a></li><li><a class="tocitem" href="../../examples/graph_coloring/">Graph Coloring Problem</a></li></ul></li><li><span class="tocitem">API Reference</span><ul><li><a class="tocitem" href="../../api/model/">Model</a></li><li><a class="tocitem" href="../../api/dag/">DAG</a></li><li><a class="tocitem" href="../../api/constraints/">Constraints</a></li><li><a class="tocitem" href="../../api/heuristics/">Heuristics</a></li><li><a class="tocitem" href="../../api/experiments/">Experiments</a></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">User Guide</a></li><li class="is-active"><a href>Creating Experiments</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Creating Experiments</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/amazon-science/JuLS" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/amazon-science/JuLS/blob/main/docs/src/guide/experiments.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="Creating-Experiments"><a class="docs-heading-anchor" href="#Creating-Experiments">Creating Experiments</a><a id="Creating-Experiments-1"></a><a class="docs-heading-anchor-permalink" href="#Creating-Experiments" title="Permalink"></a></h1><p>Experiments in JuLS define the structure and data of optimization problems. They serve as the foundation for setting up your optimization model.</p><h2 id="What-is-an-Experiment?"><a class="docs-heading-anchor" href="#What-is-an-Experiment?">What is an Experiment?</a><a id="What-is-an-Experiment?-1"></a><a class="docs-heading-anchor-permalink" href="#What-is-an-Experiment?" title="Permalink"></a></h2><p>An experiment is a Julia struct that inherits from the abstract type <code>Experiment</code> and encapsulates:</p><ul><li>Problem instance data</li><li>Decision variable definitions</li><li>Domain generation logic</li><li>Problem-specific initialization methods</li></ul><h2 id="Required-Interface"><a class="docs-heading-anchor" href="#Required-Interface">Required Interface</a><a id="Required-Interface-1"></a><a class="docs-heading-anchor-permalink" href="#Required-Interface" title="Permalink"></a></h2><p>Every experiment must implement the following functions:</p><h3 id="Core-Functions"><a class="docs-heading-anchor" href="#Core-Functions">Core Functions</a><a id="Core-Functions-1"></a><a class="docs-heading-anchor-permalink" href="#Core-Functions" title="Permalink"></a></h3><pre><code class="language-julia hljs"># Define the number of decision variables
+n_decision_variables(e::YourExperiment)::Int
+
+# Define the type of decision variables
+decision_type(e::YourExperiment)::Type
+
+# Generate domains for decision variables
+generate_domains(e::YourExperiment)::Vector
+
+# Create the DAG representation of the problem
+create_dag(e::YourExperiment)::DAG</code></pre><h3 id="Initialization-Function"><a class="docs-heading-anchor" href="#Initialization-Function">Initialization Function</a><a id="Initialization-Function-1"></a><a class="docs-heading-anchor-permalink" href="#Initialization-Function" title="Permalink"></a></h3><pre><code class="language-julia hljs"># Define how to initialize solutions
+(::SimpleInitialization)(e::YourExperiment)::Vector</code></pre><h2 id="Decision-Variable-Types"><a class="docs-heading-anchor" href="#Decision-Variable-Types">Decision Variable Types</a><a id="Decision-Variable-Types-1"></a><a class="docs-heading-anchor-permalink" href="#Decision-Variable-Types" title="Permalink"></a></h2><p>JuLS supports several decision variable types:</p><ul><li><code>BinaryDecisionValue</code>: For 0/1 variables</li><li><code>IntDecisionValue</code>: For integer variables with bounds</li><li><code>PermutationDecisionValue</code>: For permutation problems</li></ul><h2 id="Example:-Custom-Experiment"><a class="docs-heading-anchor" href="#Example:-Custom-Experiment">Example: Custom Experiment</a><a id="Example:-Custom-Experiment-1"></a><a class="docs-heading-anchor-permalink" href="#Example:-Custom-Experiment" title="Permalink"></a></h2><p>Here&#39;s how to create a simple custom experiment:</p><pre><code class="language-julia hljs">using JuLS
+
+# Define your experiment struct
+struct MyCustomExperiment &lt;: Experiment
+    n_vars::Int
+    bounds::Vector{Tuple{Int,Int}}
+    objective_weights::Vector{Float64}
+end
+
+# Implement required functions
+function n_decision_variables(e::MyCustomExperiment)
+    return e.n_vars
+end
+
+function decision_type(e::MyCustomExperiment)
+    return IntDecisionValue
+end
+
+function generate_domains(e::MyCustomExperiment)
+    domains = []
+    for (lower, upper) in e.bounds
+        push!(domains, lower:upper)
+    end
+    return domains
+end
+
+function create_dag(e::MyCustomExperiment)
+    # Create your DAG here
+    # This defines the constraints and objectives
+    dag = DAG(1)
+    
+    # Add invariants to represent your problem
+    # See the DAG guide for details
+    
+    return dag
+end
+
+# Define initialization
+function (::SimpleInitialization)(e::MyCustomExperiment)
+    solution = []
+    for (lower, upper) in e.bounds
+        push!(solution, rand(lower:upper))
+    end
+    return solution
+end</code></pre><h2 id="Built-in-Experiments"><a class="docs-heading-anchor" href="#Built-in-Experiments">Built-in Experiments</a><a id="Built-in-Experiments-1"></a><a class="docs-heading-anchor-permalink" href="#Built-in-Experiments" title="Permalink"></a></h2><p>JuLS provides several built-in experiments:</p><h3 id="KnapsackExperiment"><a class="docs-heading-anchor" href="#KnapsackExperiment">KnapsackExperiment</a><a id="KnapsackExperiment-1"></a><a class="docs-heading-anchor-permalink" href="#KnapsackExperiment" title="Permalink"></a></h3><p>For binary knapsack problems:</p><pre><code class="language-julia hljs">experiment = KnapsackExperiment(&quot;path/to/data/file&quot;)</code></pre><p>The data file should contain:</p><ul><li>First line: number of items, knapsack capacity</li><li>Following lines: weight, value for each item</li></ul><h3 id="TSPExperiment"><a class="docs-heading-anchor" href="#TSPExperiment">TSPExperiment</a><a id="TSPExperiment-1"></a><a class="docs-heading-anchor-permalink" href="#TSPExperiment" title="Permalink"></a></h3><p>For traveling salesman problems:</p><pre><code class="language-julia hljs">experiment = TSPExperiment(&quot;path/to/tsp/file&quot;)</code></pre><p>Supports standard TSP file formats with distance matrices.</p><h3 id="GraphColoringExperiment"><a class="docs-heading-anchor" href="#GraphColoringExperiment">GraphColoringExperiment</a><a id="GraphColoringExperiment-1"></a><a class="docs-heading-anchor-permalink" href="#GraphColoringExperiment" title="Permalink"></a></h3><p>For graph coloring problems:</p><pre><code class="language-julia hljs">experiment = GraphColoringExperiment(&quot;path/to/graph/file&quot;, n_colors)</code></pre><p>Where <code>n_colors</code> is the number of colors to use. The graph file should specify edges in the graph.</p><h2 id="Best-Practices"><a class="docs-heading-anchor" href="#Best-Practices">Best Practices</a><a id="Best-Practices-1"></a><a class="docs-heading-anchor-permalink" href="#Best-Practices" title="Permalink"></a></h2><h3 id="Data-Loading"><a class="docs-heading-anchor" href="#Data-Loading">Data Loading</a><a id="Data-Loading-1"></a><a class="docs-heading-anchor-permalink" href="#Data-Loading" title="Permalink"></a></h3><ul><li>Load and validate data in the constructor</li><li>Store preprocessed data as struct fields</li><li>Handle file format errors gracefully</li></ul><pre><code class="language-julia hljs">struct MyExperiment &lt;: Experiment
+    data::Matrix{Float64}
+    
+    function MyExperiment(filepath::String)
+        # Load and validate data
+        if !isfile(filepath)
+            error(&quot;Data file not found: $filepath&quot;)
+        end
+        
+        data = load_data(filepath)
+        validate_data(data)
+        
+        new(data)
+    end
+end</code></pre><h3 id="Domain-Generation"><a class="docs-heading-anchor" href="#Domain-Generation">Domain Generation</a><a id="Domain-Generation-1"></a><a class="docs-heading-anchor-permalink" href="#Domain-Generation" title="Permalink"></a></h3><ul><li>Use efficient data structures for large domains</li><li>Consider domain reduction techniques</li><li>Cache domains if they&#39;re expensive to compute</li></ul><pre><code class="language-julia hljs">function generate_domains(e::MyExperiment)
+    # Cache domains if needed
+    if !isdefined(e, :cached_domains)
+        e.cached_domains = compute_domains(e)
+    end
+    return e.cached_domains
+end</code></pre><h3 id="DAG-Construction"><a class="docs-heading-anchor" href="#DAG-Construction">DAG Construction</a><a id="DAG-Construction-1"></a><a class="docs-heading-anchor-permalink" href="#DAG-Construction" title="Permalink"></a></h3><ul><li>Keep DAG construction modular</li><li>Use helper functions for complex constraints</li><li>Document the problem formulation</li></ul><pre><code class="language-julia hljs">function create_dag(e::MyExperiment)
+    dag = DAG()
+    
+    # Add constraints systematically
+    add_capacity_constraints!(dag, e)
+    add_objective_function!(dag, e)
+    add_problem_specific_constraints!(dag, e)
+    
+    return dag
+end</code></pre><h2 id="Testing-Your-Experiment"><a class="docs-heading-anchor" href="#Testing-Your-Experiment">Testing Your Experiment</a><a id="Testing-Your-Experiment-1"></a><a class="docs-heading-anchor-permalink" href="#Testing-Your-Experiment" title="Permalink"></a></h2><p>Always test your experiment implementation:</p><pre><code class="language-julia hljs"># Test basic functionality
+experiment = MyCustomExperiment(...)
+
+@test n_decision_variables(experiment) &gt; 0
+@test decision_type(experiment) &lt;: DecisionValue
+@test length(generate_domains(experiment)) == n_decision_variables(experiment)
+
+# Test with a model
+model = init_model(experiment)
+@test model isa Model
+
+# Test optimization
+optimize!(model; limit = IterationLimit(10))
+@test model.best_solution.objective isa Number</code></pre><h2 id="Common-Pitfalls"><a class="docs-heading-anchor" href="#Common-Pitfalls">Common Pitfalls</a><a id="Common-Pitfalls-1"></a><a class="docs-heading-anchor-permalink" href="#Common-Pitfalls" title="Permalink"></a></h2><ol><li><strong>Inconsistent dimensions</strong>: Ensure all arrays have consistent sizes</li><li><strong>Invalid domains</strong>: Check that domains are non-empty and valid</li><li><strong>Missing exports</strong>: Don&#39;t forget to export your experiment type</li><li><strong>Performance issues</strong>: Profile domain generation and DAG construction for large instances</li></ol><h2 id="Next-Steps"><a class="docs-heading-anchor" href="#Next-Steps">Next Steps</a><a id="Next-Steps-1"></a><a class="docs-heading-anchor-permalink" href="#Next-Steps" title="Permalink"></a></h2><ul><li>Learn about <a href="../dag/">DAG and Invariants</a> to define your problem constraints</li><li>Explore <a href="../heuristics/">Heuristics</a> to customize the optimization process</li><li>See complete <a href="../../examples/knapsack/">Examples</a> for reference implementations</li></ul></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../../getting_started/">« Getting Started</a><a class="docs-footer-nextpage" href="../dag/">DAG and Invariants »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.14.1 on <span class="colophon-date" title="Wednesday 17 September 2025 16:33">Wednesday 17 September 2025</span>. Using Julia version 1.11.7.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
