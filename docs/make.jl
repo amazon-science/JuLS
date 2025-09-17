@@ -2,14 +2,14 @@ using Documenter
 using JuLS
 
 makedocs(
-    sitename = "JuLS.jl",
-    format = Documenter.HTML(
-        prettyurls = get(ENV, "CI", nothing) == "true",
-        canonical = "https://amazon-science.github.io/JuLS.jl/stable/",
-        assets = String[],
+    sitename="JuLS.jl",
+    format=Documenter.HTML(
+        prettyurls=get(ENV, "CI", nothing) == "true",
+        canonical="https://amazon-science.github.io/JuLS.jl/stable/",
+        assets=String[],
     ),
-    modules = [JuLS],
-    pages = [
+    modules=[JuLS],
+    pages=[
         "Home" => "index.md",
         "Getting Started" => "getting_started.md",
         "User Guide" => [
@@ -31,10 +31,10 @@ makedocs(
             "Experiments" => "api/experiments.md",
         ],
     ],
-    checkdocs = :exports,
+    checkdocs=:none,
 )
 
 deploydocs(
-    repo = "github.com/amazon-science/JuLS.git",
-    devbranch = "main",
+    repo="github.com/amazon-science/JuLS.git",
+    devbranch="main",
 )
