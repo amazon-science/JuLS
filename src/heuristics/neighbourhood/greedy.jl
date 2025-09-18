@@ -99,13 +99,11 @@ function init_neighbourhood(h::GreedyNeighbourhood, model::Model)
     nb_variables = length(decision_variables(model))
     best_delta_objs = Vector{Float64}(undef, nb_variables)
     moves = Vector{LazyCartesianMoves}(undef, nb_variables)
-    progress_bar = Progress(nb_variables; desc = "Init greedy: ", color = :blue)
 
     Threads.@threads for variable_id = 1:nb_variables
         best_delta_objs[variable_id] = best_feasible_delta_obj(eval_variable(variable_id, model))
 
         moves[variable_id] = LazyCartesianMoves(decision_variables(model)[[variable_id]])
-        next!(progress_bar)
     end
     h._is_init = true
     perm = sortperm(best_delta_objs)

@@ -174,7 +174,7 @@ function optimize!(
 )
     n_iterations = iteration_limit.n_iterations
     size_hint!(model, n_iterations)
-    @showprogress for i = 1:n_iterations
+    for _ = 1:n_iterations
         optimize_one_iteration!(model, T; rng)
     end
 end
