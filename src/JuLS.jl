@@ -9,8 +9,6 @@ using StatsBase
 using DataFrames
 using CSV
 using DataStructures
-using ProgressMeter
-using JSON3
 using Random
 using Combinatorics
 
