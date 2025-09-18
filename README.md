@@ -2,6 +2,8 @@
 
 # JuLS : A Julia Local Search solver
 
+[![Documentation](https://img.shields.io/badge/docs-dev-blue.svg)](https://amazon-science.github.io/JuLS.jl/dev/)
+
 </div>
 
 
